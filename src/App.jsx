@@ -1,12 +1,12 @@
-import './App.css'
+import CodeEditor from "./editor/CodeEditor";
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      d
-    </>
-  )
-}
+    <div>
+      <h1>Sonic Tone</h1>
+      <CodeEditor />
+    </div>
+  );
+};
 
-export default App
+export default App;
