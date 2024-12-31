@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
 // eslint-disable-next-line
 import * as Tone from "tone";
@@ -6,6 +6,13 @@ import ButtonsRow from "./ButtonsRow";
 
 const CodeEditor = () => {
   const editorRef = useRef(null);
+  const [fontSize, setFontSize] = useState(16);
+
+  const changeFontSize = (operator) => {
+    if ((operator === "+" && fontSize < 48) || (operator === "-" && fontSize > 12)) {
+      setFontSize(fontSize + (operator === "+" ? 2 : -2));
+    }
+  };
 
   const handleEditorDidMount = (editor) => {
     editorRef.current = editor;
@@ -27,13 +34,14 @@ const CodeEditor = () => {
 
   return (
     <div>
-      <ButtonsRow runCode={runCode} />
+      <ButtonsRow runCode={runCode} changeFontSize={changeFontSize} />
       <Editor
         height="800px"
         defaultLanguage="javascript"
         defaultValue={defaultToneScript}
         theme="vs-dark"
         onMount={handleEditorDidMount}
+        options={{ fontSize }} // Dynamically set the font size
       />
     </div>
   );
