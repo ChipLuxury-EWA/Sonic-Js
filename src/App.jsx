@@ -1,4 +1,4 @@
-import CodeEditor from "./editor/CodeEditor";
+import CodeEditor from "./editor/components/CodeEditor";
 
 const App = () => {
   return (
