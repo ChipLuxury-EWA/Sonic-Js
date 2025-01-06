@@ -1,31 +1,19 @@
 import { useRef } from "react";
 import Editor from "@monaco-editor/react";
-import * as monaco from "monaco-editor";
 // eslint-disable-next-line
-import * as Tone from "tone";
+import * as Tone from "tone"; 
+
+import { suggestions } from "../autoComplete/toneJsSuggestions";
 import ButtonsRow from "./ButtonsRow";
 
 const CodeEditor = () => {
   const editorRef = useRef(null);
 
   const handleEditorWillMount = (monaco) => {
-    monaco.languages.registerCompletionItemProvider("javascript", {
+    monaco?.languages.registerCompletionItemProvider("javascript", {
+      triggerCharacters: ["to"],
       provideCompletionItems: () => {
-        const suggestions = [
-          {
-            label: "fooooooo",
-            kind: monaco.languages.CompletionItemKind.Function,
-            insertText: "console.log()",
-            detail: "Log output to console",
-          },
-          {
-            label: "setTimeout",
-            kind: monaco.languages.CompletionItemKind.Function,
-            insertText: "setTimeout(() => {\n  \n}, 1000);",
-            detail: "Execute a function after a delay",
-          },
-        ];
-        return { suggestions: suggestions };
+        return { suggestions };
       },
     });
   };
