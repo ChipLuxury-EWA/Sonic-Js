@@ -3,7 +3,7 @@ import CodeEditor from "./editor/components/CodeEditor";
 const App = () => {
   return (
     <div>
-      <h1>Sonic Tone</h1>
+      <h1>Sonic JS</h1>
       <CodeEditor />
     </div>
   );
